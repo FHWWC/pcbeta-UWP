@@ -1,0 +1,172 @@
+﻿<Page
+    x:Class="远景论坛UWP.MyPostPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <DataTemplate x:Name="DT1" x:Key="资源1" x:DataType="local:MyThreads">
+            <UserControl>
+                <RelativePanel>
+                    <TextBlock x:Name="A" Text="{Binding Tittle}" RelativePanel.AlignLeftWithPanel="True" Width="400" Margin="10,10" TextWrapping="Wrap"/>
+                    <StackPanel x:Name="E" Orientation="Horizontal" Margin="10" RelativePanel.RightOf="A" RelativePanel.LeftOf="D">
+                        <TextBlock x:Name="B" Text="{Binding Block}" Width="200" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="C" Text="{Binding ReplyViewNum}" Width="50" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <TextBlock x:Name="D" Text="{Binding LastReply}" RelativePanel.AlignRightWithPanel="True" Margin="10,10" TextWrapping="Wrap"/>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="A1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                    <AdaptiveTrigger MinWindowHeight="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="E.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                                    <Setter Target="E.Margin" Value="0,30,0,10"/>
+                                    <Setter Target="D.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                                    <Setter Target="D.Margin" Value="10,30,0,10"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="B1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                    <AdaptiveTrigger MinWindowHeight="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </RelativePanel>
+            </UserControl>
+        </DataTemplate>
+        <DataTemplate x:Name="DT2" x:Key="资源2" x:DataType="local:MyReply">
+            <UserControl>
+                <RelativePanel>
+                    <TextBlock x:Name="A" Text="{Binding ReplyContent}" RelativePanel.AlignLeftWithPanel="True" FontWeight="Bold" Width="400" Margin="10,10,0,0" TextWrapping="Wrap"/>
+                    <TextBlock x:Name="F" Text="{Binding Tittle}" RelativePanel.AlignLeftWithPanel="True" RelativePanel.Below="A" Width="400" Margin="10,5,0,10" TextWrapping="Wrap"/>
+                    <StackPanel x:Name="E" Orientation="Horizontal" Margin="10" RelativePanel.RightOf="A" RelativePanel.LeftOf="D">
+                        <TextBlock x:Name="B" Text="{Binding Block}" Width="200" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                        <TextBlock x:Name="C" Text="{Binding ReplyViewNum}" Width="50" Margin="20,0,0,0" TextWrapping="Wrap"/>
+                    </StackPanel>
+                    <TextBlock x:Name="D" Text="{Binding LastReply}" RelativePanel.AlignRightWithPanel="True" Margin="10" TextWrapping="Wrap"/>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="A1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                    <AdaptiveTrigger MinWindowHeight="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="E.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                                    <Setter Target="E.(RelativePanel.Below)" Value="F"/>
+                                    <Setter Target="D.(RelativePanel.AlignRightWithPanel)" Value="True"/>
+                                    <Setter Target="D.(RelativePanel.Below)" Value="F"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="B1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                    <AdaptiveTrigger MinWindowHeight="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </RelativePanel>
+            </UserControl>
+        </DataTemplate>
+        <DataTemplate x:Name="DT3" x:Key="资源3" x:DataType="local:MyDP">
+            <UserControl>
+                <RelativePanel>
+                    <TextBlock x:Name="A" Text="{x:Bind Tittle}" Width="800" Margin="10" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True" />
+                    <TextBlock x:Name="B" Text="{x:Bind Block}" Width="200" Margin="10" RelativePanel.AlignRightWithPanel="True"/>
+                    <TextBlock x:Name="C" Text="{x:Bind DPContent}" FontWeight="Bold" Margin="10,0,10,10" TextWrapping="Wrap" RelativePanel.Below="A" RelativePanel.AlignLeftWithPanel="True"/>
+
+                    <VisualStateManager.VisualStateGroups>
+                        <VisualStateGroup>
+                            <VisualState x:Name="A1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="0" />
+                                    <AdaptiveTrigger MinWindowHeight="0" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+                                    <Setter Target="B.(RelativePanel.Below)" Value="C"/>
+                                    <Setter Target="B.(RelativePanel.AlignLeftWithPanel)" Value="True"/>
+                                    <Setter Target="B.(RelativePanel.AlignRightWithPanel)" Value="False"/>
+                                    <Setter Target="C.Margin" Value="10,0"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="B1">
+                                <VisualState.StateTriggers>
+                                    <AdaptiveTrigger MinWindowWidth="600" />
+                                    <AdaptiveTrigger MinWindowHeight="800" />
+                                </VisualState.StateTriggers>
+                                <VisualState.Setters>
+
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateManager.VisualStateGroups>
+                </RelativePanel>
+            </UserControl>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="A">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="布局2.Visibility" Value="Visible"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="B">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowHeight="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+            <Button Name="MyThBtn" Content="帖子" Background="DodgerBlue" Foreground="White" Click="TopBtn_Click"/>
+            <Button Name="MyReBtn" Content="回复" Background="DodgerBlue" Foreground="White" Margin="20,0,0,0" Click="TopBtn_Click"/>
+            <Button Name="MyDPBtn" Content="点评" Background="DodgerBlue" Foreground="White" Margin="20,0,0,0" Click="TopBtn_Click"/>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Text="我发布的内容:" FontSize="26" Margin="10"/>
+            <TextBlock Text="以下是您发布过的相关内容,每页加载20条." TextWrapping="Wrap" Margin="10"/>
+            <TextBlock Name="布局2" Text="检测到您的设备或窗口尺寸过小,以为您切换到合适的比例布局." Visibility="Collapsed" TextWrapping="Wrap" Margin="10,0,0,0"/>
+        </StackPanel>
+        <TextBlock Name="NoMessage" HorizontalAlignment="Center"/>
+        <ScrollViewer Name="布局1">
+            <ListView Name="TestList" ItemTemplate="{StaticResource 资源1}" IsItemClickEnabled="True" ItemClick="TestList_ItemClick"/>
+        </ScrollViewer>
+        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="10">
+            <Button Name="BackBtn" Content="上一页" Background="DodgerBlue" Foreground="White" Click="BackBtn_Click"/>
+            <TextBox Name="Pageindex" Height="40" MaxLength="2" Margin="50,0,0,0"/>
+            <Button Name="JumpBtn" Height="40" Content="Go" Margin="10,0,0,0" Click="JumpBtn_Click"/>
+            <TextBlock Text="页码：" Margin="10"/>
+            <TextBlock Name="PageNum" Text="1" Margin="0,10"/>
+            <Button Name="NextBtn" Content="下一页" Background="DodgerBlue" Foreground="White" Margin="50,0,0,0" Click="NextBtn_Click"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

@@ -1,0 +1,226 @@
+﻿<Page
+    x:Class="远景论坛UWP.BBS2Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <StackPanel Margin="0,20,0,0">
+        <TextBlock Text="请选择子版块" HorizontalAlignment="Center" FontSize="26"/>
+
+        <ListView x:FieldModifier="Public" Name="子版1" Margin="0,20,0,0" Visibility="Collapsed" SelectionChanged="子版1_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                    <Setter Property="Width" Value="350"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P1" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="笔记本综合论坛"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P2" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Acer 宏基用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P3" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="ASUS 华硕用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P4" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Dell 戴尔用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P5" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="HP 惠普用户论坛"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P6" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Lenovo 联想用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P7" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="SONY 索尼用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Name="Z1P8" Height="50" Width="150"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="TOSHIBA 东芝用户论坛" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+        <ListView x:FieldModifier="Public" Name="子版2" Margin="0,20,0,0" Visibility="Collapsed" SelectionChanged="子版2_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z2P1"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Mac OS X 游戏资源"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z2P2"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Mac OS X 美化" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z2P3"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Mac OS X 苹果驱动" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z2P4"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="Mac OS X 软件资源" />
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+        <ListView x:FieldModifier="Public" Name="子版3" Margin="0,20,0,0" Visibility="Collapsed" SelectionChanged="子版3_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z3P1"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="会员求助与建议区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z3P2"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="申诉及投诉专区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z3P3"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="违规举报受理区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z3P4"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="账号处罚处理区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+        <ListView x:FieldModifier="Public" Name="子版4" Margin="0,20,0,0" Visibility="Collapsed" SelectionChanged="子版4_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z4P1"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="管理组申请区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z4P2"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="其他用户组申请区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z4P3"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="自建群报备"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem>
+                <StackPanel Orientation="Horizontal">
+                    <Image Width="50" Height="50" Name="Z4P4"/>
+                    <StackPanel>
+                        <TextBlock Margin="10,0,0,0" Text="友链申请区"/>
+                    </StackPanel>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+    </StackPanel>
+</Page>

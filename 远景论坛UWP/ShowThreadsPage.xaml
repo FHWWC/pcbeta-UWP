@@ -1,0 +1,301 @@
+﻿<Page
+    x:Class="远景论坛UWP.ShowThreadsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:data="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <DataTemplate x:Name="资源1" x:DataType="local:ThreadsIfm">
+            <RelativePanel>
+                <TextBlock x:Name="A" Text="{Binding Tags}" FontSize="10" Width="50" TextWrapping="Wrap" RelativePanel.AlignLeftWithPanel="True"/>
+                <TextBlock x:Name="B" Text="{Binding Tittle}" Width="500" TextWrapping="Wrap" RelativePanel.RightOf="A" RelativePanel.LeftOf="C" Foreground="Brown" Margin="10,0"/>
+                <StackPanel x:Name="C" RelativePanel.AlignRightWithPanel="True" Margin="10,0" Orientation="Horizontal">
+                    <TextBlock Text="{Binding Postby}" Width="100" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding CheckViewNum}" Width="50" TextWrapping="Wrap" Margin="10,0,0,0"/>
+                    <TextBlock Text="{Binding LastReply}" Width="120" TextWrapping="Wrap" Foreground="Brown" Margin="10,0,0,0"/>
+                </StackPanel>
+            </RelativePanel>
+        </DataTemplate>
+        <DataTemplate x:Name="资源2">
+            <Image Source="{Binding PreviewIMG}" Width="200" Height="300"/>
+        </DataTemplate>
+        <DataTemplate x:Name="资源3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding FileName}" TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding ViewLVL}" FontWeight="Bold"  Grid.Column="1" Margin="20,0,0,0"/>
+                <TextBlock Text="{Binding Price}" FontWeight="Bold" Grid.Column="2" Margin="20,0,0,0"/>
+            </Grid>
+        </DataTemplate>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="{TemplateBinding CornerRadius}" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <StackPanel Margin="20">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="A">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="BlockNText.FontSize" Value="20"/>
+                        <Setter Target="BZText.FontSize" Value="12"/>
+                        <Setter Target="BZText.Width" Value="120"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="B">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowHeight="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Button Name="CloseWV" Content="关闭窗口" Height="50" Width="100" HorizontalAlignment="Center" VerticalAlignment="Top" Visibility="Collapsed" x:FieldModifier="Public" Click="CloseWV_Click"/>
+        <StackPanel Name="TPageContent">
+            <Grid>
+                <TextBlock Name="BlockNText" FontSize="28"/>
+                <TextBlock Name="BZText" TextWrapping="Wrap" Width="200" HorizontalAlignment="Right" Foreground="Brown"/>
+            </Grid>
+            <StackPanel Orientation="Horizontal" Name="布局1">
+                <TextBlock Text="今日回帖数:"/>
+                <TextBlock Name="TodayText" FontWeight="Bold"  Foreground="Brown"/>
+            </StackPanel>
+
+            <Grid>
+                <Button Name="刷新" Content="&#xE149;" FontFamily="Segoe MDL2 Assets" HorizontalAlignment="Left" Background="{x:Null}" FontSize="20" Click="刷新_Click"/>
+                <Button Style="{StaticResource ButtonStyle1}" Name="发布" HorizontalAlignment="Right" FontSize="28" Background="{x:Null}" Foreground="White" Margin="0,20" Click='发布_Click'>
+                    <Grid>
+                        <Ellipse Height="50" Width="50" Fill="DodgerBlue"/>
+                        <TextBlock Text="&#xE70F;" FontFamily="Segoe MDL2 Assets" Margin="10"/>
+                    </Grid>
+                </Button>
+            </Grid>
+            <ContentDialog Name="发帖页" PrimaryButtonText="发布帖子" PrimaryButtonClick="发帖页_PrimaryButtonClick" SecondaryButtonText="取消" Closing="发帖页_Closing">
+                <ScrollViewer>
+                    <StackPanel>
+                        <ComboBox Name="ThreadFL" Header="帖子分类"/>
+                        <TextBox Name="发帖标题" Header="标题" MaxLength="80"/>
+                        <StackPanel Orientation="Horizontal" Height="60">
+                            <Button Name="文本设置">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock Text="&#xE8E9;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                    <TextBlock Text="文本设置"/>
+                                </StackPanel>
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <StackPanel>
+                                            <StackPanel Orientation="Horizontal">
+                                                <ComboBox Name="FTFont" Header="字体" SelectionChanged="FTFont_SelectionChanged">
+                                                    <ComboBoxItem Content="仿宋"/>
+                                                    <ComboBoxItem Content="黑体"/>
+                                                    <ComboBoxItem Content="楷体"/>
+                                                    <ComboBoxItem Content="宋体"/>
+                                                    <ComboBoxItem Content="新宋体"/>
+                                                    <ComboBoxItem Content="微软雅黑"/>
+                                                </ComboBox>
+                                                <ComboBox Name="FTFontSize" Header="大小" SelectionChanged="FtFontSize_SelectionChanged" Margin="10,0,0,0">
+                                                    <ComboBoxItem Content="1"/>
+                                                    <ComboBoxItem Content="2"/>
+                                                    <ComboBoxItem Content="3"/>
+                                                    <ComboBoxItem Content="4"/>
+                                                    <ComboBoxItem Content="5"/>
+                                                    <ComboBoxItem Content="6"/>
+                                                    <ComboBoxItem Content="7"/>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Button Name="FTBlod" Content="&#xE8DD;" FontFamily="Segoe MDL2 Assets" Click="FTBlod_Click"/>
+                                                <Button Name="FTFi" Content="&#xE8DB;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FTFi_Click"/>
+                                                <Button Name="FTLine" Content="&#xE8DC;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FTLine_Click"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Button Name="FTColor" Content="文本色" Click="FTColor_Click"/>
+                                                <Button Name="FTBgcolor" Content="背景色" Margin="20,0,0,0" Click="FTBgcolor_Click"/>
+                                                <Button Name="FTLink" Content="&#xE167;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FTLink_Click"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Button Name="FTCode" Content="添加代码" Click="FTCode_Click"/>
+                                                <Button Name="FTQuote" Content="引用" Margin="20,0,0,0" Click="FTQuote_Click"/>
+                                            </StackPanel>
+                                            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                                <Button Name="FTLeft" Content="&#xE1A2;" FontFamily="Segoe MDL2 Assets" Click="FTLeft_Click"/>
+                                                <Button Name="FTCenter" Content="&#xE1A1;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FTCenter_Click"/>
+                                                <Button Name="FTRight" Content="&#xE1A0;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FTRight_Click"/>
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button Name="表情设置" Margin="20,0,0,0">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock Text="&#xE11D;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                    <TextBlock Text="表情设置"/>
+                                </StackPanel>
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <StackPanel>
+                                            <TextBox Name="BQ1" Header="老虎" Loaded="BQ_Loaded"/>
+                                            <TextBox Name='BQ2' Header="鱼妹兔" Loaded="BQ_Loaded"/>
+                                            <TextBox Name="BQ3" Header="兔斯基" Loaded="BQ_Loaded"/>
+                                            <TextBox Name="BQ4" Header="达达兔" Loaded="BQ_Loaded"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button Name="图片上传" Margin="20,0,0,0">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock Text="&#xE17C;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                    <TextBlock Text="图片上传"/>
+                                </StackPanel>
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <StackPanel>
+                                            <Button Name="上传" Content="选择文件" Click='上传_Click'/>
+                                            <TextBlock Name="SelectIMGCount"/>
+                                            <Button Name="开始" Content="开始上传" Margin="0,10,0,0" Click="开始_Click"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <ProgressRing Name="UploadIMGRing" Visibility="Collapsed" Margin="0,5,5,0"/>
+                                                <TextBlock Name="UploadIMGCount"/>
+                                            </StackPanel>
+                                            <StackPanel Name="操作1" Orientation="Horizontal" Margin="0,40,0,0" Visibility="Collapsed">
+                                                <Button Name="添加" Content="插入到帖子" Background="DodgerBlue" Foreground="White" Click="添加_Click"/>
+                                                <Button Name="删除1" Content="删除附件" Background="Red" Foreground="White" Margin="10,0,0,0" Click="删除1_Click"/>
+                                            </StackPanel>
+                                            <ListView Name="UploadIMGList" Margin="0,40,0,0" ItemTemplate="{StaticResource 资源2}" IsItemClickEnabled="True" SelectionChanged="UploadIMGList_SelectionChanged">
+                                                <ListView.ItemContainerStyle>
+                                                    <Style TargetType="ListViewItem">
+                                                        <Setter Property="Width" Value="200"/>
+                                                        <Setter Property="Height" Value="300"/>
+                                                    </Style>
+                                                </ListView.ItemContainerStyle>
+                                            </ListView>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button Name="附件上传" Margin="20,0,0,0">
+                                <StackPanel HorizontalAlignment="Center">
+                                    <TextBlock Text="&#xE16C;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                    <TextBlock Text="附件上传"/>
+                                </StackPanel>
+                                <Button.Flyout>
+                                    <Flyout>
+                                        <StackPanel>
+                                            <Button Name="上传2" Content="选择文件" Click='上传2_Click'/>
+                                            <TextBlock Name="SelectFileCount"/>
+                                            <Button Name="开始2" Content="开始上传" Margin="0,20,0,0" Click="开始2_Click"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <ProgressRing Name="UploadFileRing" Visibility="Collapsed" Margin="0,5,5,0"/>
+                                                <TextBlock Name="UploadFileCount"/>
+                                            </StackPanel>
+                                            <StackPanel Name="操作2" Orientation="Horizontal" Margin="0,40,0,0" Visibility="Collapsed">
+                                                <Button Name="添加2" Content="插入到帖子" Background="DodgerBlue" Foreground="White" Click="添加2_Click"/>
+                                                <Button Name="删除2" Content="删除附件" Background="Red" Foreground="White" Margin="10,0,0,0" Click="删除2_Click"/>
+                                            </StackPanel>
+                                            <StackPanel Name="操作2b" Orientation="Horizontal" Margin="0,10,0,0" Visibility="Collapsed">
+                                                <TextBox Name="设定1" Header="阅读权限"/>
+                                                <TextBox Name="设定2" Header="附件售价" Margin="10,0,0,0"/>
+                                                <Button Name="更新" Content="更新" Background="DodgerBlue" Foreground="White" Click="更新_Click" Margin="20,0,0,0"/>
+                                            </StackPanel>
+                                            <TextBlock Name="SDError"/>
+                                            <ListView Name="SCFJList" Margin="0,40,0,0" ItemTemplate="{StaticResource 资源3}" IsItemClickEnabled="True" SelectionChanged="SCFJList_SelectionChanged"/>
+                                        </StackPanel>
+                                    </Flyout>
+                                </Button.Flyout>
+                            </Button>
+                        </StackPanel>
+
+                        <RichEditBox Name="内容" Header="内容" Height="350" TextWrapping="Wrap" AcceptsReturn="False"/>
+                    </StackPanel>
+                </ScrollViewer>
+            </ContentDialog>
+
+            <ProgressRing Name="滚动条" Width="60" Height="60"/>
+
+            <ListView Name="ThreadList" ItemTemplate="{StaticResource 资源1}" SelectionChanged="ThreadList_SelectionChanged"/>
+        </StackPanel>
+    </StackPanel>
+</Page>

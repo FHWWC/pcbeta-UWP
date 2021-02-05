@@ -1,0 +1,185 @@
+﻿<Page
+    x:Class="远景论坛UWP.BBSMainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <Page.Resources>
+        <DataTemplate x:Key="Block1T" x:DataType="local:BBSMainBlock">
+            <StackPanel Orientation="Horizontal" Height="80" Width="300">
+                <Image Width="50" Height="50" Source="{Binding BlockICON}"/>
+                <StackPanel Margin="10,0,0,0">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding BlockTittle}" Width="205" FontWeight="Bold" FontSize="16" TextWrapping="Wrap"/>
+                        <TextBlock Text="{Binding TodayPosts}" Foreground="OrangeRed"/>
+                    </StackPanel>
+                    <TextBlock Text="{Binding BlockIfm}" Width="230" TextWrapping="Wrap"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+    </Page.Resources>
+    <StackPanel>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState x:Name="A">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0" />
+                        <AdaptiveTrigger MinWindowHeight="0" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="B">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600" />
+                        <AdaptiveTrigger MinWindowHeight="800" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ProgressRing Name="LoadRing" Width="60" Height="60" HorizontalAlignment="Center"/>
+        <Image Source="BlockICON/B1Bkg.png"/>
+        <ListView SelectionMode="Multiple">
+            <ListViewItem Name="板块1a" IsSelected="True" Content="最热门的板块之一：Windows 10 社区"/>
+        </ListView>
+        <ListView Name="List1a" Visibility="{Binding ElementName=板块1a,Path=IsSelected}" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ListView SelectionMode="Multiple">
+            <ListViewItem Name="板块1b" Content="Windows 经典老版本及资源"/>
+        </ListView>
+        <ListView Name="List1b" Visibility="{Binding ElementName=板块1b,Path=IsSelected}" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ListView SelectionMode="Multiple">
+            <ListViewItem Name="板块1c" Content="设备及硬件"/>
+        </ListView>
+        <ListView Name="List1c" Visibility="{Binding ElementName=板块1c,Path=IsSelected}" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        <ListView SelectionMode="Multiple">
+            <ListViewItem Name="板块1d" Content="微软其他产品"/>
+        </ListView>
+        <ListView Name="List1d" Visibility="{Binding ElementName=板块1d,Path=IsSelected}" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+        
+        <Grid Margin="0,20,0,0">
+            <Image Source="BlockICON/B2Bkg.png"/>
+            <ListView Name="List2" Margin="0,20,0,0" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            </ListView>
+        </Grid>
+
+        <Grid Margin="0,20,0,0">
+            <Image Source="BlockICON/B3Bkg.png"/>
+            <ListView Name="List3" Margin="0,60,0,0" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Width" Value="300"/>
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+
+        <Grid Margin="0,20,0,0">
+            <Image Source="BlockICON/B6Bkg.png"/>
+            <ListView Name="List4" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Width" Value="300"/>
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+
+        <Grid Margin="0,20,0,0">
+            <Image Source="BlockICON/B4Bkg.png"/>
+            <ListView Name="List5" Margin="80,0,0,0" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapGrid Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Width" Value="300"/>
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+        </Grid>
+
+        <Image Source="BlockICON/B5Bkg.png" Margin="0,20,0,0"/>
+        <ListView Name="List6" ItemTemplate="{StaticResource Block1T}" SelectionChanged="List_SelectionChanged">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Setter Property="Width" Value="300"/>
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+        </ListView>
+    </StackPanel>
+</Page>

@@ -1,0 +1,473 @@
+﻿<Page
+    x:Class="远景论坛UWP.ThreadContentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+    <Page.Resources>
+        <Style x:Key="ButtonStyle1" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="100" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPressed}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="Button">
+            <Setter Property="Background" Value="{ThemeResource ButtonBackground}"/>
+            <Setter Property="Foreground" Value="{ThemeResource ButtonForeground}"/>
+            <Setter Property="BorderBrush" Value="{ThemeResource ButtonBorderBrush}"/>
+            <Setter Property="BorderThickness" Value="{ThemeResource ButtonBorderThemeThickness}"/>
+            <Setter Property="Padding" Value="{StaticResource ButtonPadding}"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="UseSystemFocusVisuals" Value="{StaticResource UseSystemFocusVisuals}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <ContentPresenter x:Name="ContentPresenter" AutomationProperties.AccessibilityView="Raw" Background="{TemplateBinding Background}" BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding BorderBrush}" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" CornerRadius="150" ContentTransitions="{TemplateBinding ContentTransitions}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" Padding="{TemplateBinding Padding}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="CommonStates">
+                                    <VisualState x:Name="Normal">
+                                        <Storyboard>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="PointerOver">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundPointerOver}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerUpThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Pressed">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Null}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <PointerDownThemeAnimation Storyboard.TargetName="ContentPresenter"/>
+                                        </Storyboard>
+                                    </VisualState>
+                                    <VisualState x:Name="Disabled">
+                                        <Storyboard>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Background">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBackgroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="BorderBrush">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonBorderBrushDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ContentPresenter" Storyboard.TargetProperty="Foreground">
+                                                <DiscreteObjectKeyFrame KeyTime="0" Value="{ThemeResource ButtonForegroundDisabled}"/>
+                                            </ObjectAnimationUsingKeyFrames>
+                                        </Storyboard>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                        </ContentPresenter>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Name="资源1" x:DataType="local:ThreadComm">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <HyperlinkButton Tag="{Binding CommUserlink}" Content="{Binding CommUsername}" Click="HyperlinkButton_Click"/>
+                    <Button Content="&#xE946;" FontFamily="Segoe MDL2 Assets" Background="Transparent" Margin="5,0,0,0">
+                        <Button.Flyout>
+                            <Flyout>
+                                <TextBlock Text="{Binding CommUserIfm}" TextWrapping="Wrap"/>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                    <TextBlock Text="{Binding CommIfm}" Margin="20,5" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Name="PostPanel" Margin="20,10">
+                    <TextBlock Text="{Binding CommContent}" TextWrapping="Wrap"/>
+                    <ListViewItem Content="{Binding ThreadFJ}" Margin="0,10,0,0" Visibility="{Binding FJVisibility}"/>
+                    <ListViewItem Content="{Binding ThreadDP}" Margin="0,10,0,0" Visibility="{Binding DPVisibility}"/>
+                    <TextBlock Text="评分：" FontSize="16" Foreground="OrangeRed" Visibility="{Binding RateVisibility}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" Visibility="{Binding RateVisibility}">
+                        <Button Content="查看评分列表" Height="40" Background="Orange" Foreground="White" Tag="{Binding RateURL}" Click="CommCheckRate_Click"/>
+                        <ListViewItem Content="{Binding RateList}" Margin="40,0,0,0"/>
+                        <TextBlock Text="{Binding RateNote}" Margin="20,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Name="资源2">
+            <Image Source="{Binding PreviewIMG}" Width="200" Height="300"/>
+        </DataTemplate>
+        <DataTemplate x:Name="资源3">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding FileName}" TextWrapping="Wrap"/>
+                <TextBlock Text="{Binding ViewLVL}" FontWeight="Bold"  Grid.Column="1" Margin="20,0,0,0"/>
+                <TextBlock Text="{Binding Price}" FontWeight="Bold" Grid.Column="2" Margin="20,0,0,0"/>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+
+    <StackPanel>
+        <TextBlock Name="BlockName" FontWeight="Bold" Margin="50,10,0,0"/>
+        <StackPanel Name="ThreadPanel" Margin="20">
+            <TextBlock Name="ThreadTitle" FontSize="20" FontWeight="Bold" TextWrapping="Wrap"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <HyperlinkButton Name="UserNameBtn" Click="HyperlinkButton_Click"/>
+                <Button Content="&#xE946;" FontFamily="Segoe MDL2 Assets" Background="Transparent" Grid.Column="1">
+                    <Button.Flyout>
+                        <Flyout>
+                            <TextBlock Name="UserIfm" Width="400" TextWrapping="Wrap"/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <TextBlock Name="ThreadIfm" Margin="20,5" Grid.Column="2" TextWrapping="Wrap"/>
+            </Grid>
+        </StackPanel>
+        <StackPanel Name="PostPanel" Margin="20,10">
+            <TextBlock Name="ThrContent" HorizontalAlignment="Center" TextWrapping="Wrap"/>
+            <StackPanel Name="ThrFJ" Margin="0,10,0,0"/>
+            <StackPanel Name="ThrDP" Margin="0,10,0,0"/>
+            <TextBlock Name="RateText" Text="评分：" FontSize="16" Foreground="OrangeRed" Visibility="Collapsed"/>
+            <StackPanel Name="RatePanel" Orientation="Horizontal" Margin="0,10,0,0" Visibility="Collapsed">
+                <Button Name="CheckRateBtn" Content="查看评分列表" Height="40" Background="Orange" Foreground="White" Click="CheckRateBtn_Click"/>
+                <StackPanel Name="RateList" Orientation="Horizontal" Margin="40,0,0,0"/>
+                <TextBlock Name="RateNote" Margin="20,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+            <Grid Name="ThrManagePanel" Margin="20" Visibility="Collapsed">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                    <Button Name="DZBtn" Height="50" Width="50" Foreground="White" Background="DodgerBlue" Click="LeftFourBtn_Click" ToolTipService.ToolTip="赞">
+                        <StackPanel>
+                            <TextBlock Text="&#xE8E1;" FontFamily="Segoe MDL2 Assets" FontSize="24"/>
+                            <TextBlock Name="DZCount" Text="0" FontSize="12" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="FDBtn" Height="50" Width="50" Foreground="White" Background="Red" Click="LeftFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="踩">
+                        <StackPanel>
+                            <TextBlock Text="&#xE8E0;" FontFamily="Segoe MDL2 Assets" FontSize="24"/>
+                            <TextBlock Name="FDCount" Text="0" FontSize="12" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="SCBtn" Height="50" Width="50" Foreground="White" Background="Green"  Click="LeftFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="收藏">
+                        <StackPanel>
+                            <TextBlock Text="&#xE24A;" FontFamily="Segoe MDL2 Assets" FontSize="24"/>
+                            <TextBlock Name="scCount" Text="0" FontSize="12" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                    <Button Name="ShareBtn" Height="50" Width="50" Foreground="White" Background="Orange" Click="LeftFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="分享">
+                        <StackPanel>
+                            <TextBlock Text="&#xE72D;" FontFamily="Segoe MDL2 Assets" FontSize="24"/>
+                            <TextBlock Name="ShareCount" Text="0" FontSize="12" HorizontalAlignment="Center"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center">
+                    <Button Name="ReplyBtn" Height="60" Width="100" Background="DodgerBlue" HorizontalAlignment="Center" Click="ReplyBtn_Click"  ToolTipService.ToolTip="发表回复">
+                        <Image Source="SmallICON/Write.png" />
+                    </Button>
+                    <TextBlock Name="ReplyStatus" Text="当前帖子无法回复" Foreground="Red" FontSize="16" Visibility="Collapsed"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Name="EditBtn" Content="&#xE70F;" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" FontSize="24" Foreground="White" Background="DodgerBlue" Click="RightFourBtn_Click"  ToolTipService.ToolTip="编辑"/>
+                    <Button Name="RateBtn" IsEnabled="False" Height="50" Width="50" FontSize="24" Foreground="White" Background="Orange" Click="RightFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="评分">
+                        <Image Source="SmallICON/RateICON.png"/>
+                    </Button>
+                    <Button Name="ToolBtn" IsEnabled="False" Content="&#xF133;" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" FontSize="24" Foreground="White" Background="DodgerBlue"  Click="RightFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="道具"/>
+                    <Button Name="ReportBtn" IsEnabled="False" Content="&#xE7BA;" FontFamily="Segoe MDL2 Assets" Height="50" Width="50" FontSize="24" Foreground="White" Background="Red" Click="RightFourBtn_Click" Margin="10,0,0,0"  ToolTipService.ToolTip="举报"/>
+                </StackPanel>
+            </Grid>
+            <HyperlinkButton Name="ThreadRecord" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <StackPanel Name="CommentPanel" Margin="0,10,0,0">
+            <ListView Name="CommentList" ItemTemplate="{StaticResource 资源1}" IsItemClickEnabled="True" ItemClick="CommentList_ItemClick">
+                <FlyoutBase.AttachedFlyout>
+                    <Flyout>
+                        <ListView Name="CommFlyout" IsItemClickEnabled="True" ItemClick="CommFlyout_ItemClick">
+                            <ListViewItem Name="CommList1" Content="点评" Visibility="Collapsed"/>
+                            <ListViewItem Name="CommList2" Foreground="White" Background="DodgerBlue" Content="回复" Visibility="Collapsed"/>
+                            <ListViewItem Name="CommList3" Foreground="White" Background="DodgerBlue" Content="编辑" Visibility="Collapsed"/>
+                            <ListViewItem IsEnabled="False" Foreground="White" Background="Orange" Content="评分"/>
+                            <ListViewItem IsEnabled="False" Name="CommList5" Foreground="White" Background="Red" Content="举报" Visibility="Collapsed"/>
+                        </ListView>
+                    </Flyout>
+                </FlyoutBase.AttachedFlyout>
+            </ListView>
+        </StackPanel>
+        
+        <ContentDialog x:Name="CheckRate" PrimaryButtonText="关闭" PrimaryButtonClick="CheckRate_PrimaryButtonClick">
+            <StackPanel>
+                <StackPanel.Background>
+                    <ImageBrush ImageSource="SmallICON/CoinBKG.png"/>
+                </StackPanel.Background>
+                <TextBlock Text="评分列表" FontSize="18" HorizontalAlignment="Center"/>
+
+                <ScrollViewer Height="350" Width="500" Margin="0,20,0,0">
+                    <TextBlock Name="RateIfm" HorizontalAlignment="Right"/>
+                </ScrollViewer>
+
+                <TextBlock Name="RateTotal" FontWeight="Bold" Margin="0,20,0,0" HorizontalAlignment="Center"/>
+            </StackPanel>
+        </ContentDialog>
+        <ContentDialog x:Name="SCFXPanel" PrimaryButtonText="确认操作" PrimaryButtonClick="SCFXPanel_PrimaryButtonClick" SecondaryButtonText="取消" SecondaryButtonClick="SCFXPanel_SecondaryButtonClick">
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Text="请输入说明：" FontSize="18" Width="500"/>
+                <TextBox Name="SCFXContent" TextWrapping="Wrap" Margin="0,20,0,0"/>
+            </StackPanel>
+        </ContentDialog>
+        <ContentDialog Name="PostCommPage" PrimaryButtonText="发表回帖" PrimaryButtonClick="PostCommPage_PrimaryButtonClick" SecondaryButtonText="取消" SecondaryButtonClick="PostCommPage_SecondaryButtonClick">
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBox Name="PostTitle" MaxLength="80"/>
+                    <StackPanel Orientation="Horizontal" Height="60" HorizontalAlignment="Center">
+                        <Button Name="ContentButton">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE8E9;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                <TextBlock Text="文本设置"/>
+                            </StackPanel>
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ComboBox Name="FTFont" Header="字体" SelectionChanged="FTFont_SelectionChanged">
+                                                <ComboBoxItem Content="仿宋"/>
+                                                <ComboBoxItem Content="黑体"/>
+                                                <ComboBoxItem Content="楷体"/>
+                                                <ComboBoxItem Content="宋体"/>
+                                                <ComboBoxItem Content="新宋体"/>
+                                                <ComboBoxItem Content="微软雅黑"/>
+                                            </ComboBox>
+                                            <ComboBox Name="FTFontSize" Header="大小" SelectionChanged="FTFontSize_SelectionChanged" Margin="10,0,0,0">
+                                                <ComboBoxItem Content="1"/>
+                                                <ComboBoxItem Content="2"/>
+                                                <ComboBoxItem Content="3"/>
+                                                <ComboBoxItem Content="4"/>
+                                                <ComboBoxItem Content="5"/>
+                                                <ComboBoxItem Content="6"/>
+                                                <ComboBoxItem Content="7"/>
+                                            </ComboBox>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Name="FTBlod" Content="&#xE8DD;" FontFamily="Segoe MDL2 Assets" Click="FirstBtn_Click"/>
+                                            <Button Name="FTFi" Content="&#xE8DB;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                            <Button Name="FTLine" Content="&#xE8DC;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Name="FTColor" Content="文本色" Click="FirstBtn_Click"/>
+                                            <Button Name="FTBgcolor" Content="背景色" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                            <Button Name="FTLink" Content="&#xE167;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Name="FTCode" Content="添加代码" Click="FirstBtn_Click"/>
+                                            <Button Name="FTQuote" Content="引用" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                                            <Button Name="FTLeft" Content="&#xE1A2;" FontFamily="Segoe MDL2 Assets" Click="FirstBtn_Click"/>
+                                            <Button Name="FTCenter" Content="&#xE1A1;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                            <Button Name="FTRight" Content="&#xE1A0;" FontFamily="Segoe MDL2 Assets" Margin="20,0,0,0" Click="FirstBtn_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Button Name="EmojiButton" Margin="20,0,0,0">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE11D;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                <TextBlock Text="表情设置"/>
+                            </StackPanel>
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <TextBox Name="BQ1" Header="老虎" Loaded="SecondBtn_Click"/>
+                                        <TextBox Name='BQ2' Header="鱼妹兔" Loaded="SecondBtn_Click"/>
+                                        <TextBox Name="BQ3" Header="兔斯基" Loaded="SecondBtn_Click"/>
+                                        <TextBox Name="BQ4" Header="达达兔" Loaded="SecondBtn_Click"/>
+                                        <TextBlock Text="目前不支持直接选择，使用请输入表情ID。"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Button Name="ImageButton" Margin="20,0,0,0">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE17C;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                <TextBlock Text="图片上传"/>
+                            </StackPanel>
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <Button Name="SelectIMGUpload" Content="选择文件" Click='SelectIMGUpload_Click'/>
+                                        <TextBlock Name="SelectIMGCount"/>
+                                        <Button Name="StartIMGUpload" Content="开始上传" Margin="0,10,0,0" Click="StartIMGUpload_Click"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ProgressRing Name="UploadIMGRing" Visibility="Collapsed" Margin="0,5,5,0"/>
+                                            <TextBlock Name="UploadIMGCount"/>
+                                        </StackPanel>
+                                        <StackPanel Name="IMGPanel" Orientation="Horizontal" Margin="0,40,0,0" Visibility="Collapsed">
+                                            <Button Name="InsertIMG" Content="插入到帖子" Background="DodgerBlue" Foreground="White" Click="InsertIMG_Click"/>
+                                            <Button Name="DeleteIMG" Content="删除附件" Background="Red" Foreground="White" Margin="10,0,0,0" Click="DeleteIMG_Click"/>
+                                        </StackPanel>
+                                        <ListView Name="UploadIMGList" Margin="0,40,0,0" ItemTemplate="{StaticResource 资源2}" IsItemClickEnabled="True" SelectionChanged="UploadIMGList_SelectionChanged">
+                                            <ListView.ItemContainerStyle>
+                                                <Style TargetType="ListViewItem">
+                                                    <Setter Property="Width" Value="200"/>
+                                                    <Setter Property="Height" Value="300"/>
+                                                </Style>
+                                            </ListView.ItemContainerStyle>
+                                        </ListView>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                        <Button Name="FileButton" Margin="20,0,0,0">
+                            <StackPanel HorizontalAlignment="Center">
+                                <TextBlock Text="&#xE16C;" FontFamily="Segoe MDL2 Assets" FontSize="22"/>
+                                <TextBlock Text="附件上传"/>
+                            </StackPanel>
+                            <Button.Flyout>
+                                <Flyout>
+                                    <StackPanel>
+                                        <Button Name="SelectFileUpload" Content="选择文件" Click='SelectFileUpload_Click'/>
+                                        <TextBlock Name="SelectFileCount"/>
+                                        <Button Name="StartFileUpload" Content="开始上传" Margin="0,20,0,0" Click="StartFileUpload_Click"/>
+                                        <StackPanel Orientation="Horizontal">
+                                            <ProgressRing Name="UploadFileRing" Visibility="Collapsed" Margin="0,5,5,0"/>
+                                            <TextBlock Name="UploadFileCount"/>
+                                        </StackPanel>
+                                        <StackPanel Name="FilePanel" Orientation="Horizontal" Margin="0,40,0,0" Visibility="Collapsed">
+                                            <Button Name="InsertFile" Content="插入到帖子" Background="DodgerBlue" Foreground="White" Click="InsertFile_Click"/>
+                                            <Button Name="DeleteFile" Content="删除附件" Background="Red" Foreground="White" Margin="10,0,0,0" Click="DeleteFile_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Name="FilePanel2" Orientation="Horizontal" Margin="0,10,0,0" Visibility="Collapsed">
+                                            <TextBox Name="SetFileRead" Header="阅读权限"/>
+                                            <TextBox Name="SetFilePrice" Header="附件售价" Margin="10,0,0,0"/>
+                                            <Button Name="UpdateFile" Content="更新" Background="DodgerBlue" Foreground="White" Click="UpdateFile_Click" Margin="20,0,0,0"/>
+                                        </StackPanel>
+                                        <TextBlock Name="SDError"/>
+                                        <ListView Name="SCFJList" Margin="0,40,0,0" ItemTemplate="{StaticResource 资源3}" IsItemClickEnabled="True" SelectionChanged="SCFJList_SelectionChanged"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </Button.Flyout>
+                        </Button>
+                    </StackPanel>
+
+                    <RichEditBox Name="PostContent" Header="回帖不能少于2个字符，若要换行请输入\n。03至05 点不能进行任何回帖操作。" PlaceholderText="请勿发表无意义评论，想好再发表，如有敏感词将会触发审核，之后有任何疑问可联系版主" 
+                                 MinHeight="300" MaxHeight="450" TextWrapping="Wrap" AcceptsReturn="False"/>
+                </StackPanel>
+            </ScrollViewer>
+        </ContentDialog>
+   
+        <!--
+                    <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Button Style="{StaticResource ButtonStyle2}" Name="CommLeftAvatar" Height="150" Width="150" Click="CommLeftAvatar_Click">
+                    <Button.Background>
+                        <ImageBrush ImageSource="TopbarICON/默认头像.jpg"/>
+                    </Button.Background>
+                </Button>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="回帖不能少于2个字符，若要换行请输入\n。03至05 点不能进行任何回帖操作。" TextWrapping="Wrap"/>
+                    <TextBox Name="CommTextbox" Header="发表评论：" TextWrapping="Wrap">
+                        <TextBox.PlaceholderText>
+                            请勿发表无意义评论，想好再发表，如有敏感词将会触发审核，有任何疑问可联系版主
+                        </TextBox.PlaceholderText>
+                    </TextBox>
+                    
+                </StackPanel>
+            </Grid>
+        -->
+    </StackPanel>
+</Page>

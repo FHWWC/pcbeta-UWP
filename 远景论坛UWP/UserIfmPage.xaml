@@ -1,0 +1,31 @@
+﻿<Page
+    x:Class="远景论坛UWP.UserIfmPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:远景论坛UWP"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="Page_Loaded">
+
+    <StackPanel Name="MainPanel" Margin="20">
+        <TextBlock Text="账户信息" FontSize="20"/>
+        <TextBlock Name="userAcc" TextWrapping="Wrap" Margin="0,20"/>
+        <TextBlock Text="个人资料" FontSize="20"/>
+        <TextBlock Name="userIfm" TextWrapping="Wrap" Margin="0,20"/>
+
+        <StackPanel Name="XZPanel" Visibility="Collapsed">
+            <TextBlock Text="勋章" FontSize="20"/>
+            <ScrollViewer HorizontalScrollBarVisibility="Visible">
+                <StackPanel Name="XZList" Orientation="Horizontal" Margin="0,20"/>
+            </ScrollViewer>
+        </StackPanel>
+        <StackPanel Name="BZPanel" Margin="0,20,0,0" Visibility="Collapsed">
+            <TextBlock Text="管理以下版块" FontSize="20" />
+            <TextBlock Name="userAdmin" TextWrapping="Wrap" Margin="0,20"/>
+        </StackPanel>
+
+        <TextBlock Text="活跃概况" FontSize="20" Margin="0,20"/>
+        <StackPanel Name="UGroupPanel" Orientation="Horizontal"/>
+        <TextBlock Name="userData" TextWrapping="Wrap"/>
+    </StackPanel>
+</Page>
